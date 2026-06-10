@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Applicants — Quick Connect LS</title>
+  <link rel="stylesheet" href="../assets/css/main.css" />
+</head>
+<body>
+
+  <div id="header"></div>
+
+  <section class="page-head">
+    <div class="container">
+      <div class="breadcrumbs">
+        <a href="/index.html">Home</a>
+        <span>›</span>
+        <span>Employer</span>
+        <span>›</span>
+        <span>Applicants</span>
+      </div>
+      <h1 class="page-title">Applicants</h1>
+      <p class="page-subtitle">Review candidates and contact them directly (demo).</p>
+    </div>
+  </section>
+
+  <main class="section section-alt">
+    <div class="container applicants-layout">
+
+      <!-- Applicants table -->
+      <section class="card">
+        <div class="dash-head">
+          <h2 class="dash-title">Recent Applications</h2>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <a class="btn btn-outline" href="/employer/dashboard.html">Back to Dashboard</a>
+            <a class="btn btn-primary" href="/employer/post-job.html">+ Post a Job</a>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Applicant</th>
+                <th>Job</th>
+                <th>Location</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="applicantsBody">
+              <!-- injected by JS -->
+            </tbody>
+          </table>
+        </div>
+
+        <p class="small muted" style="margin:12px 0 0;">
+          Phase 7+ will connect this to real users + job posts.
+        </p>
+      </section>
+
+      <!-- Sidebar -->
+      <aside class="dash-aside">
+        <div class="card">
+          <h3 style="margin-top:0;">Suggested Actions</h3>
+          <ul class="muted" style="margin:10px 0 0; padding-left:18px;">
+            <li>Reply within 24 hours if possible</li>
+            <li>Confirm interview date/time clearly</li>
+            <li>Be transparent about salary and location</li>
+          </ul>
+        </div>
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- Modal (Demo view) -->
+  <div class="modal" id="applicantModal" hidden>
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-card">
+      <div class="modal-head">
+        <h3 class="modal-title">Applicant Details</h3>
+        <button class="btn btn-outline btn-sm" data-close-modal>Close</button>
+      </div>
+
+      <div id="modalContent" class="modal-body">
+        <!-- injected -->
+      </div>
+
+      <div class="modal-actions">
+        <a class="btn btn-primary" id="emailBtn" href="#">Email Applicant</a>
+        <a class="btn btn-outline" id="callBtn" href="#">Call Applicant</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="footer"></div>
+
+  <script src="../assets/js/include.js"></script>
+  <script src="../assets/js/employer.js"></script>
+</body>
+</html>

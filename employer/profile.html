@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Company Profile — Quick Connect LS</title>
+  <link rel="stylesheet" href="../assets/css/main.css" />
+</head>
+<body>
+
+  <div id="header"></div>
+
+  <section class="page-head">
+    <div class="container">
+      <div class="breadcrumbs">
+        <a href="/index.html">Home</a>
+        <span>›</span>
+        <span>Employer</span>
+        <span>›</span>
+        <span>Profile</span>
+      </div>
+      <h1 class="page-title">Company Profile</h1>
+      <p class="page-subtitle">Keep your profile updated so job seekers trust your listings.</p>
+    </div>
+  </section>
+
+  <main class="section section-alt">
+    <div class="container">
+      <div class="card">
+        <h2 style="margin-top:0;">Company Information (Demo)</h2>
+
+        <div class="grid-2-form">
+          <div class="field">
+            <label class="label" for="company">Company Name</label>
+            <input id="company" type="text" placeholder="e.g. TechHub Lesotho" />
+          </div>
+
+          <div class="field">
+            <label class="label" for="industry">Industry</label>
+            <select id="industry">
+              <option value="">Select industry</option>
+              <option>IT & Tech</option>
+              <option>Admin</option>
+              <option>Construction</option>
+              <option>Health</option>
+              <option>Education</option>
+              <option>Retail</option>
+              <option>Finance</option>
+              <option>Marketing</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid-2-form">
+          <div class="field">
+            <label class="label" for="location">Location</label>
+            <select id="location">
+              <option value="">Select location</option>
+              <option>Maseru</option>
+              <option>Leribe</option>
+              <option>Thaba-Tseka</option>
+              <option>Mafeteng</option>
+              <option>Mohale's Hoek</option>
+              <option>Quthing</option>
+              <option>Butha-Buthe</option>
+              <option>Mokhotlong</option>
+              <option>Qacha's Nek</option>
+              <option>Berea</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label class="label" for="phone">Phone</label>
+            <input id="phone" type="tel" placeholder="+266 ..." />
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label" for="about">About Company</label>
+          <textarea id="about" rows="5" placeholder="Short description about your company..."></textarea>
+        </div>
+
+        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:10px;">
+          <button class="btn btn-primary" type="button">Save Changes (Demo)</button>
+          <a class="btn btn-outline" href="/employer/dashboard.html">Back to Dashboard</a>
+        </div>
+
+        <p class="small muted" style="margin-top:12px;">
+          Phase 7+ will store these fields in a database (Firebase recommended).
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <div id="footer"></div>
+
+  <script src="../assets/js/include.js"></script>
+</body>
+</html>

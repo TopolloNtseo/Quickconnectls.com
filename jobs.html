@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Browse Jobs — Quick Connect LS</title>
+  <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body>
+
+  <!-- Shared Header -->
+  <div id="header"></div>
+
+  <!-- Page Title + Breadcrumbs -->
+  <section class="page-head">
+    <div class="container">
+      <div class="breadcrumbs">
+        <a href="/index.html">Home</a>
+        <span>›</span>
+        <span>Jobs</span>
+      </div>
+      <h1 class="page-title">Browse Jobs</h1>
+      <p class="page-subtitle">Search jobs across Lesotho and apply in minutes.</p>
+    </div>
+  </section>
+
+  <main class="section section-alt">
+    <div class="container">
+
+      <!-- Filters -->
+      <section class="card filters">
+        <div class="filters-grid">
+          <div class="field">
+            <label for="filterQ" class="label">Keyword</label>
+            <input id="filterQ" type="text" placeholder="e.g. developer, nurse, teacher" />
+          </div>
+
+          <div class="field">
+            <label for="filterLocation" class="label">Location</label>
+            <select id="filterLocation">
+              <option value="all">All Locations</option>
+              <option value="maseru">Maseru</option>
+              <option value="leribe">Leribe</option>
+              <option value="thaba-tseka">Thaba-Tseka</option>
+              <option value="mafeteng">Mafeteng</option>
+              <option value="mohales-hoek">Mohale's Hoek</option>
+              <option value="quthing">Quthing</option>
+              <option value="butha-buthe">Butha-Buthe</option>
+              <option value="mokhotlong">Mokhotlong</option>
+              <option value="qacha-nek">Qacha's Nek</option>
+              <option value="berea">Berea</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="filterType" class="label">Job Type</label>
+            <select id="filterType">
+              <option value="all">All Types</option>
+              <option value="full-time">Full-time</option>
+              <option value="part-time">Part-time</option>
+              <option value="contract">Contract</option>
+              <option value="internship">Internship</option>
+              <option value="temporary">Temporary</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="filterCategory" class="label">Category</label>
+            <select id="filterCategory">
+              <option value="all">All Categories</option>
+              <option value="it-tech">IT & Tech</option>
+              <option value="admin">Admin</option>
+              <option value="construction">Construction</option>
+              <option value="health">Health</option>
+              <option value="education">Education</option>
+              <option value="retail">Retail</option>
+              <option value="marketing">Marketing</option>
+              <option value="finance">Finance</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="filters-actions">
+          <button class="btn btn-primary" id="applyFiltersBtn">Apply Filters</button>
+          <button class="btn btn-outline" id="resetFiltersBtn">Reset</button>
+          <span class="muted" id="resultsCount">0 jobs found</span>
+        </div>
+      </section>
+
+      <!-- Results -->
+      <section class="jobs-layout">
+        <div class="jobs-results" id="jobsResults">
+          <!-- job cards injected here -->
+        </div>
+
+        <!-- Right sidebar (optional placeholder) -->
+        <aside class="jobs-sidebar">
+          <div class="card">
+            <h3 class="sidebar-title">For Employers</h3>
+            <p class="muted">Need to hire fast? Post a job in minutes.</p>
+            <a class="btn btn-primary" href="/employer/post-job.html">Post a Job</a>
+          </div>
+
+          <div class="card">
+            <h3 class="sidebar-title">Safety Tip</h3>
+            <p class="muted"><strong>No upfront payment.</strong> Never pay to apply for a job.</p>
+            <a class="btn btn-outline" href="/index.html#safety">Read safety info</a>
+          </div>
+        </aside>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Shared Footer -->
+  <div id="footer"></div>
+
+  <script src="assets/js/include.js"></script>
+ <script type="module" src="/assets/js/jobs.js"></script>
+</body>
+</html>

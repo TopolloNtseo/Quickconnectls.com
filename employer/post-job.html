@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Post a Job — Quick Connect LS</title>
+  <link rel="stylesheet" href="../assets/css/main.css" />
+</head>
+<body>
+
+  <div id="header"></div>
+
+  <section class="page-head">
+    <div class="container">
+      <div class="breadcrumbs">
+        <a href="/index.html">Home</a>
+        <span>›</span>
+        <span>Employer</span>
+        <span>›</span>
+        <span>Post a Job</span>
+      </div>
+      <h1 class="page-title">Post a Job</h1>
+      <p class="page-subtitle">Create a clear listing to attract the right candidates.</p>
+    </div>
+  </section>
+
+  <main class="section section-alt">
+    <div class="container form-layout">
+
+      <!-- Form -->
+      <section class="card">
+        <div class="dash-head">
+          <h2 class="dash-title">Job Details</h2>
+          <a class="btn btn-outline" href="/employer/dashboard.html">Back to Dashboard</a>
+        </div>
+
+        <form id="postJobForm" class="form-stack">
+
+          <div class="grid-2-form">
+            <div class="field">
+              <label for="title">Job Title *</label>
+              <input id="title" type="text" required />
+            </div>
+
+            <div class="field">
+              <label for="company">Company *</label>
+              <input id="company" type="text" required />
+            </div>
+          </div>
+
+          <div class="grid-2-form">
+            <div class="field">
+              <label for="location">Location *</label>
+              <select id="location" required>
+                <option value="">Select location</option>
+                <option>Maseru</option>
+                <option>Leribe</option>
+                <option>Thaba-Tseka</option>
+                <option>Mafeteng</option>
+                <option>Mohale's Hoek</option>
+                <option>Quthing</option>
+                <option>Butha-Buthe</option>
+                <option>Mokhotlong</option>
+                <option>Qacha's Nek</option>
+                <option>Berea</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="type">Job Type *</label>
+              <select id="type" required>
+                <option value="">Select job type</option>
+                <option>Full-time</option>
+                <option>Part-time</option>
+                <option>Contract</option>
+                <option>Internship</option>
+                <option>Temporary</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid-2-form">
+            <div class="field">
+              <label for="category">Category *</label>
+              <select id="category" required>
+                <option value="">Select category</option>
+                <option>IT & Tech</option>
+                <option>Admin</option>
+                <option>Construction</option>
+                <option>Health</option>
+                <option>Education</option>
+                <option>Retail</option>
+                <option>Marketing</option>
+                <option>Finance</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="deadline">Closing Date</label>
+              <input id="deadline" type="date" />
+            </div>
+          </div>
+
+          <div class="grid-2-form">
+            <div class="field">
+              <label for="salary">Salary (optional)</label>
+              <input id="salary" type="text" />
+            </div>
+
+            <div class="field">
+              <label for="contact">Contact Email *</label>
+              <input id="contact" type="email" required />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="summary">Short Summary *</label>
+            <textarea id="summary" rows="3" required></textarea>
+          </div>
+
+          <div class="field">
+            <label for="requirements">Requirements *</label>
+            <textarea id="requirements" rows="5" required></textarea>
+          </div>
+
+          <div class="field">
+            <label for="howToApply">How to Apply</label>
+            <textarea id="howToApply" rows="3"></textarea>
+          </div>
+
+          <div class="check-row">
+            <label>
+              <input id="agree" type="checkbox" required />
+              I confirm this job is legitimate.
+            </label>
+          </div>
+
+          <div class="form-actions">
+            <button class="btn btn-primary" type="submit">
+              Publish Job
+            </button>
+            <button class="btn btn-outline" type="reset">Clear</button>
+          </div>
+
+          <div id="postJobMsg" class="auth-message" hidden></div>
+
+        </form>
+      </section>
+
+    </div>
+  </main>
+
+  <div id="footer"></div>
+
+  <script src="../assets/js/include.js"></script>
+
+  <!-- IMPORTANT: will connect Firebase here -->
+  <script type="module" src="../assets/js/employer.js"></script>
+
+</body>
+</html>

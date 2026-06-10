@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Job Details — Quick Connect LS</title>
+  <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body>
+
+  <div id="header"></div>
+
+  <section class="page-head">
+    <div class="container">
+      <div class="breadcrumbs">
+        <a href="/index.html">Home</a>
+        <span>›</span>
+        <a href="/jobs.html">Jobs</a>
+        <span>›</span>
+        <span>Job Details</span>
+      </div>
+      <h1 class="page-title">Job Details</h1>
+    </div>
+  </section>
+
+  <main class="section">
+    <div class="container">
+
+      <!-- STATIC INFO (optional loading text) -->
+      <div class="card" id="loadingCard">
+        <p class="muted" id="jobIdText">Loading job...</p>
+      </div>
+
+      <!-- DYNAMIC FIREBASE CONTENT -->
+      <div id="jobDetails" class="card" style="margin-top:15px;"></div>
+
+      <div style="margin-top:15px;">
+        <a class="btn btn-primary" href="/auth.html">Apply (Login Required)</a>
+        <a class="btn btn-outline" href="/jobs.html">Back to Jobs</a>
+      </div>
+
+    </div>
+  </main>
+
+  <div id="footer"></div>
+
+  <script src="assets/js/include.js"></script>
+  <script type="module" src="/assets/js/job-details.js"></script>
+
+  <script>
+    const p = new URLSearchParams(window.location.search);
+    const id = p.get("id") || "N/A";
+    document.getElementById("jobIdText").textContent = `Job ID: ${id}`;
+  </script>
+
+</body>
+</html>

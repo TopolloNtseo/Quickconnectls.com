@@ -1,0 +1,12 @@
+# Firebase / secrets
+firebase.json
+.firebaserc
+
+# OS files
+Thumbs.db
+
+# VS Code
+.vscode/
+
+# Node (future)
+node_modules/

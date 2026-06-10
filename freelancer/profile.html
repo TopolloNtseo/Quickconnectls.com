@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Profile — Quick Connect LS</title>
+  <link rel="stylesheet" href="../assets/css/main.css" />
+</head>
+<body>
+
+  <div id="header"></div>
+
+  <section class="page-head">
+    <div class="container">
+      <div class="breadcrumbs">
+        <a href="/index.html">Home</a>
+        <span>›</span>
+        <span>Job Seeker</span>
+        <span>›</span>
+        <span>Profile</span>
+      </div>
+      <h1 class="page-title">My Profile</h1>
+      <p class="page-subtitle">Your profile helps employers trust your application.</p>
+    </div>
+  </section>
+
+  <main class="section section-alt">
+    <div class="container form-layout">
+
+      <section class="card">
+        <div class="dash-head">
+          <h2 class="dash-title">Profile Details (Demo)</h2>
+          <a class="btn btn-outline" href="/freelancer/dashboard.html">Back to Dashboard</a>
+        </div>
+
+        <form id="profileForm" class="form-stack">
+          <div class="grid-2-form">
+            <div class="field">
+              <label class="label" for="fullName">Full Name</label>
+              <input id="fullName" type="text" placeholder="e.g. Nnete Julius Sesheme" />
+            </div>
+
+            <div class="field">
+              <label class="label" for="phone">Phone</label>
+              <input id="phone" type="tel" placeholder="+266 ..." />
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label" for="email">Email</label>
+            <input id="email" type="email" placeholder="you@example.com" />
+          </div>
+
+          <div class="field">
+            <label class="label" for="headline">Professional Headline</label>
+            <input id="headline" type="text" placeholder="e.g. Junior Web Developer | IT Support" />
+          </div>
+
+          <div class="field">
+            <label class="label" for="skills">Skills (comma separated)</label>
+            <input id="skills" type="text" placeholder="HTML, CSS, JavaScript, Excel..." />
+          </div>
+
+          <div class="field">
+            <label class="label" for="summary">Short Summary</label>
+            <textarea id="summary" rows="4" placeholder="A short professional summary..."></textarea>
+          </div>
+
+          <div class="field">
+            <label class="label" for="cv">Upload CV (placeholder)</label>
+            <input id="cv" type="file" accept=".pdf,.doc,.docx" />
+            <p class="small muted" style="margin:8px 0 0;">
+              Phase 7+ will store your CV in cloud storage (Firebase Storage recommended).
+            </p>
+          </div>
+
+          <div class="form-actions">
+            <button class="btn btn-primary" type="submit">Save Profile (Demo)</button>
+            <button class="btn btn-outline" type="reset">Clear</button>
+          </div>
+
+          <div id="profileMsg" class="auth-message" hidden></div>
+        </form>
+      </section>
+
+      <aside class="form-aside">
+        <div class="card">
+          <h3 style="margin-top:0;">Profile Checklist</h3>
+          <ul class="muted" style="margin:10px 0 0; padding-left:18px;">
+            <li>Full name + phone</li>
+            <li>Headline + skills</li>
+            <li>Short summary</li>
+            <li>CV upload (Phase 7+)</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3 style="margin-top:0;">Next Step</h3>
+          <p class="muted">Once your profile is ready, start applying.</p>
+          <a class="btn btn-outline" href="/jobs.html">Browse Jobs</a>
+        </div>
+      </aside>
+
+    </div>
+  </main>
+
+  <div id="footer"></div>
+
+  <script src="../assets/js/include.js"></script>
+  <script src="../assets/js/freelancer.js"></script>
+</body>
+</html>

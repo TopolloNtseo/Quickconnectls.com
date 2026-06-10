@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quick Connect LS — Find Jobs in Lesotho</title>
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <script src="assets/js/include.js"></script>
+  <script src="assets/js/main.js"></script>
+  <!-- Boxicons Script -->
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div id="header"></div>
+
+    <!-- Mobile Nav -->
+    <div class="mobile-nav" id="mobileNav" hidden>
+      <div class="container mobile-nav-inner">
+        <a href="jobs.html" class="mobile-link">Jobs</a>
+        <a href="employer/post-job.html" class="mobile-link">Post a Job</a>
+        <a href="auth.html" class="mobile-link">Login</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-top">
+          <h1>Find jobs in Lesotho. Fast.</h1>
+          <p>Search verified listings and apply in minutes.</p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary btn-lg" href="jobs.html">Search Jobs</a>
+            <a class="btn btn-outline btn-lg" href="employer/post-job.html">Post a Job</a>
+          </div>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="search-card" role="search" aria-label="Job Search">
+          <form id="heroSearchForm" class="search-grid">
+            <div class="field">
+              <label class="sr-only" for="q">Job title or keyword</label>
+              <span class="icon"><i class="bx bx-search"></i></span>
+              <input id="q" name="q" type="text" placeholder="Job title or keyword" />
+            </div>
+
+            <div class="field">
+              <label class="sr-only" for="location">Location</label>
+              <span class="icon"><i class="bx bx-map"></i></span>
+              <select id="location" name="location">
+                <option value="all">All Locations</option>
+                <option value="maseru">Maseru</option>
+                <option value="leribe">Leribe</option>
+                <option value="thaba-tseka">Thaba-Tseka</option>
+                <option value="mafeteng">Mafeteng</option>
+                <option value="mohales-hoek">Mohale's Hoek</option>
+                <option value="quthing">Quthing</option>
+                <option value="butha-buthe">Butha-Buthe</option>
+                <option value="mokhotlong">Mokhotlong</option>
+                <option value="qacha-nek">Qacha's Nek</option>
+                <option value="berea">Berea</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label class="sr-only" for="type">Job Type</label>
+              <span class="icon"><i class="bx bx-filter"></i></span>
+              <select id="type" name="type">
+                <option value="all">All Types</option>
+                <option value="full-time">Full-time</option>
+                <option value="part-time">Part-time</option>
+                <option value="contract">Contract</option>
+                <option value="internship">Internship</option>
+                <option value="temporary">Temporary</option>
+              </select>
+            </div>
+          </form>
+
+          <button class="btn btn-primary search-btn" type="submit" form="heroSearchForm">
+            <span class="icon"><i class="bx bx-search"></i></span> Search Jobs
+          </button>
+
+          <p class="hint">
+           <!--Tip: This MVP redirects to the Jobs page. Filtering becomes real in Phase 2.-->
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>How It Works</h2>
+          <p>Getting started is simple for both job seekers and employers</p>
+        </div>
+
+        <div class="two-col">
+          <!-- Job Seekers -->
+          <div>
+            <h3 class="subhead">For Job Seekers</h3>
+
+            <div class="stack">
+              <article class="card card-outline">
+                <div class="card-row">
+                  <div class="badge-icon"><i class="bx bx-user"></i></div>
+                  <div>
+                    <h4>1. Create Profile</h4>
+                    <p>Sign up in seconds and build your professional profile</p>
+                  </div>
+                </div>
+              </article>
+
+              <article class="card card-outline">
+                <div class="card-row">
+                  <div class="badge-icon"><i class="bx bx-search"></i></div>
+                  <div>
+                    <h4>2. Search & Apply</h4>
+                    <p>Browse verified listings and apply to jobs that match your skills</p>
+                  </div>
+                </div>
+              </article>
+
+              <article class="card card-outline">
+                <div class="card-row">
+                  <div class="badge-icon"><i class="bx bx-envelope"></i></div>
+                  <div>
+                    <h4>3. Get Contacted</h4>
+                    <p>Receive responses from employers directly to your email</p>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <!-- Employers -->
+          <div>
+            <h3 class="subhead">For Employers</h3>
+
+            <div class="stack">
+              <article class="card card-outline">
+                <div class="card-row">
+                  <div class="badge-icon"><i class="bx bx-building"></i></div>
+                  <div>
+                    <h4>1. Sign Up</h4>
+                    <p>Create your company account and get verified</p>
+                  </div>
+                </div>
+              </article>
+
+              <article class="card card-outline">
+                <div class="card-row">
+                  <div class="badge-icon"><i class="bx bx-briefcase"></i></div>
+                  <div>
+                    <h4>2. Post a Job</h4>
+                    <p>Create detailed job listings in minutes and reach thousands</p>
+                  </div>
+                </div>
+              </article>
+
+              <article class="card card-outline">
+                <div class="card-row">
+                  <div class="badge-icon"><i class="bx bx-group"></i></div>
+                  <div>
+                    <h4>3. Review Applicants</h4>
+                    <p>Manage applications and connect with qualified candidates</p>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- LATEST JOBS -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-head">
+          <h2>Latest Jobs</h2>
+          <p>Fresh opportunities posted by verified employers</p>
+        </div>
+
+        <div class="grid-2">
+          <!-- Job cards (demo) -->
+          <article class="card job-card">
+            <div class="job-top">
+              <div>
+                <h3 class="job-title">Software Developer</h3>
+                <p class="job-company">TechHub Lesotho</p>
+              </div>
+              <span class="pill">IT & Tech</span>
+            </div>
+            <ul class="job-meta">
+              <li><i class="bx bx-map"></i></li> Maseru</li>
+              <li><i class="bx bx-filter"></i> Full-time</li>
+              <li><i class="bx bx-time"></i> Posted 2 days ago</li>
+            </ul>
+            <a class="btn btn-primary" href="job-details.html">Apply Now</a>
+          </article>
+
+          <article class="card job-card">
+            <div class="job-top">
+              <div>
+                <h3 class="job-title">Administrative Assistant</h3>
+                <p class="job-company">Government Office</p>
+              </div>
+              <span class="pill">Admin</span>
+            </div>
+            <ul class="job-meta">
+              <li><i class="bx bx-map"></i> Maseru</li>
+              <li><i class="bx bx-filter"></i> Full-time</li>
+              <li><i class="bx bx-time"></i> Posted 3 days ago</li>
+            </ul>
+            <a class="btn btn-primary" href="job-details.html">Apply Now</a>
+          </article>
+
+          <article class="card job-card">
+            <div class="job-top">
+              <div>
+                <h3 class="job-title">Civil Engineer</h3>
+                <p class="job-company">BuildCo Lesotho</p>
+              </div>
+              <span class="pill">Construction</span>
+            </div>
+            <ul class="job-meta">
+              <li><i class="bx bx-map"></i> Leribe</li>
+              <li><i class="bx bx-filter"></i> Contract</li>
+              <li><i class="bx bx-time"></i> Posted 5 days ago</li>
+            </ul>
+            <a class="btn btn-primary" href="job-details.html">Apply Now</a>
+          </article>
+
+          <article class="card job-card">
+            <div class="job-top">
+              <div>
+                <h3 class="job-title">Registered Nurse</h3>
+                <p class="job-company">QMMH</p>
+              </div>
+              <span class="pill">Health</span>
+            </div>
+            <ul class="job-meta">
+              <li><i class="bx bx-map"></i> Maseru</li>
+              <li><i class="bx bx-filter"></i> Full-time</li>
+              <li><i class="bx bx-time"></i> Posted 1 week ago</li>
+            </ul>
+            <a class="btn btn-primary" href="job-details.html">Apply Now</a>
+          </article>
+        </div>
+
+        <div class="center">
+          <a class="btn btn-outline btn-lg" href="jobs.html">View All Jobs</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORIES -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Popular Categories</h2>
+          <p>Browse jobs by sector</p>
+        </div>
+
+        <div class="grid-6">
+          <div class="card category-card">
+            <div class="category-icon bg-blue"><i class="bx bx-devices"></i></div>
+            <h3>IT & Tech</h3>
+            <p>45 jobs</p>
+          </div>
+          <div class="card category-card">
+            <div class="category-icon bg-purple"><i class="bx bx-user-check"></i></div>
+            <h3>Admin</h3>
+            <p>78 jobs</p>
+          </div>
+          <div class="card category-card">
+            <div class="category-icon bg-orange"><i class="bx bx-wrench"></i></div>
+            <h3>Construction</h3>
+            <p>62 jobs</p>
+          </div>
+          <div class="card category-card">
+            <div class="category-icon bg-red"><i class="bx bx-first-aid "></i></div>
+            <h3>Health</h3>
+            <p>54 jobs</p>
+          </div>
+          <div class="card category-card">
+            <div class="category-icon bg-green"><i class="bx bx-book"></i></div>
+            <h3>Education</h3>
+            <p>89 jobs</p>
+          </div>
+          <div class="card category-card">
+            <div class="category-icon bg-pink"><i class="bx bx-cart"></i></div>
+            <h3>Retail</h3>
+            <p>67 jobs</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRUST -->
+    <section class="section trust">
+      <div class="container">
+        <div class="section-head">
+          <h2>Your Safety Matters</h2>
+          <p>We're committed to keeping Quick Connect LS safe and scam-free</p>
+        </div>
+
+        <div class="grid-4">
+          <article class="card trust-card">
+            <div class="trust-icon green"><i class="bx bx-shield"></i></div>
+            <h3>Verified Employers</h3>
+            <p>All companies are verified before posting jobs</p>
+          </article>
+          <article class="card trust-card">
+            <div class="trust-icon red"><i class="bx bx-error"></i></div>
+            <h3>Report Suspicious Posts</h3>
+            <p>Easily flag and report suspicious job listings</p>
+          </article>
+          <article class="card trust-card">
+            <div class="trust-icon blue"><i class="bx bx-wallet
+              .0693
+              
+              32165"></i></div>
+            <h3>No Upfront Payment</h3>
+            <p>Never pay to apply for a job. It's always free</p>
+          </article>
+          <article class="card trust-card">
+            <div class="trust-icon purple"><i class="bx bx-phone"></i></div>
+            <h3>24/7 Support</h3>
+            <p>Our team is here to help with any concerns</p>
+          </article>
+        </div>
+
+        <div class="trust-note card">
+          <p><strong>Important:</strong> Legitimate employers never ask for money upfront.</p>
+          <p class="small">
+            If you encounter suspicious activity, contact us at
+            <a href="mailto:topollontseo45@gmail.com">topollontseo45@gmail.com</a>
+            or call
+            <a href="tel:+26657290005">+266 572 900 05</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="final-cta">
+      <div class="container center">
+        <h2>Ready to Get Started?</h2>
+        <p>Join thousands of job seekers and employers in Lesotho</p>
+        <div class="hero-actions">
+          <a class="btn btn-light btn-lg" href="jobs.html">Search Jobs</a>
+          <a class="btn btn-outline-light btn-lg" href="employer/post-job.html">Post a Job</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <div id="footer"></div>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

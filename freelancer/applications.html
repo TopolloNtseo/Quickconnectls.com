@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Applications — Quick Connect LS</title>
+  <link rel="stylesheet" href="../assets/css/main.css" />
+</head>
+<body>
+
+  <div id="header"></div>
+
+  <section class="page-head">
+    <div class="container">
+      <div class="breadcrumbs">
+        <a href="/index.html">Home</a>
+        <span>›</span>
+        <span>Job Seeker</span>
+        <span>›</span>
+        <span>Applications</span>
+      </div>
+      <h1 class="page-title">My Applications</h1>
+      <p class="page-subtitle">Track statuses and follow up professionally.</p>
+    </div>
+  </section>
+
+  <main class="section section-alt">
+    <div class="container applicants-layout">
+
+      <section class="card">
+        <div class="dash-head">
+          <h2 class="dash-title">Applications</h2>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <a class="btn btn-outline" href="/freelancer/dashboard.html">Back to Dashboard</a>
+            <a class="btn btn-primary" href="/jobs.html">Find Jobs</a>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Job</th>
+                <th>Company</th>
+                <th>Status</th>
+                <th>Submitted</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="appsBody">
+              <!-- injected by JS -->
+            </tbody>
+          </table>
+        </div>
+
+        <p class="small muted" style="margin:12px 0 0;">
+          Phase 7+ will allow messaging and document attachments.
+        </p>
+      </section>
+
+      <aside class="dash-aside">
+        <div class="card">
+          <h3 style="margin-top:0;">Follow-Up Tip</h3>
+          <p class="muted">After 3–5 days, you can politely follow up by email.</p>
+          <button class="btn btn-outline" id="copyFollowUpBtn" type="button">Copy Follow-Up Template</button>
+          <p class="small muted" id="copyMsg" style="margin-top:10px;" hidden>Copied ✅</p>
+        </div>
+      </aside>
+
+    </div>
+  </main>
+
+  <div id="footer"></div>
+
+  <script src="../assets/js/include.js"></script>
+  <script src="../assets/js/freelancer.js"></script>
+</body>
+</html>

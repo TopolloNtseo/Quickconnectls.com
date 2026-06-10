@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login / Register — Quick Connect LS</title>
+  <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body>
+
+  <div id="header"></div>
+
+  <section class="page-head">
+    <div class="container">
+      <div class="breadcrumbs">
+        <a href="/index.html">Home</a>
+        <span>›</span>
+        <span>Auth</span>
+      </div>
+      <h1 class="page-title">Welcome Back</h1>
+      <p class="page-subtitle">Login or create an account to apply or post jobs.</p>
+    </div>
+  </section>
+
+  <main class="section section-alt">
+    <div class="container auth-wrap">
+
+      <div class="card auth-card">
+        <!-- Tabs -->
+        <div class="auth-tabs" role="tablist" aria-label="Authentication tabs">
+          <button class="tab is-active" id="tabLogin" type="button" role="tab" aria-selected="true">
+            Login
+          </button>
+          <button class="tab" id="tabRegister" type="button" role="tab" aria-selected="false">
+            Create Account
+          </button>
+        </div>
+
+        <!-- Role selection -->
+        <div class="role-switch" aria-label="Choose role">
+          <button class="role-btn is-active" type="button" data-role="seeker">Job Seeker</button>
+          <button class="role-btn" type="button" data-role="employer">Employer</button>
+        </div>
+
+        <!-- LOGIN FORM -->
+        <form id="loginForm" class="auth-form">
+          <div class="field">
+            <label class="label" for="loginEmail">Email</label>
+            <input id="loginEmail" type="email" placeholder="you@example.com" required />
+          </div>
+
+          <div class="field">
+            <label class="label" for="loginPassword">Password</label>
+            <input id="loginPassword" type="password" placeholder="Enter your password" minlength="6" required />
+          </div>
+
+          <div class="auth-row">
+            <label class="check">
+              <input type="checkbox" />
+              Remember me
+            </label>
+            <a class="link" href="#">Forgot password?</a>
+          </div>
+
+          <button class="btn btn-primary btn-block" type="submit">Login</button>
+
+          <p class="small center muted" style="margin-top:12px;">
+            By continuing, you agree to our <a class="link" href="#">Terms</a> and <a class="link" href="#">Privacy Policy</a>.
+          </p>
+        </form>
+
+        <!-- REGISTER FORM -->
+        <form id="registerForm" class="auth-form" hidden>
+          <div class="grid-2-form">
+            <div class="field">
+              <label class="label" for="firstName">First Name</label>
+              <input id="firstName" type="text" placeholder="e.g. Topollo" required />
+            </div>
+
+            <div class="field">
+              <label class="label" for="lastName">Last Name</label>
+              <input id="lastName" type="text" placeholder="e.g. Nts'eo" required />
+            </div>
+          </div>
+
+          <div class="field" id="companyField" hidden>
+            <label class="label" for="companyName">Company / Organization</label>
+            <input id="companyName" type="text" placeholder="e.g. Quick Connect LS" />
+          </div>
+
+          <div class="field">
+            <label class="label" for="registerEmail">Email</label>
+            <input id="registerEmail" type="email" placeholder="you@example.com" required />
+          </div>
+
+          <div class="field">
+            <label class="label" for="registerPassword">Password</label>
+            <input id="registerPassword" type="password" placeholder="Minimum 6 characters" minlength="6" required />
+          </div>
+
+          <div class="field">
+            <label class="label" for="registerPassword2">Confirm Password</label>
+            <input id="registerPassword2" type="password" placeholder="Repeat password" minlength="6" required />
+          </div>
+
+          <label class="check" style="margin-top:6px;">
+            <input id="termsCheck" type="checkbox" required />
+            I agree to the <a class="link" href="#">Terms</a> and <a class="link" href="#">Privacy Policy</a>.
+          </label>
+          <input type="hidden" id="selectedRole" value="seeker" />
+          <button class="btn btn-primary btn-block" type="submit">Create Account</button>
+        </form>
+
+        <!-- Message area -->
+        <div id="authMessage" class="auth-message" hidden></div>
+      </div>
+
+      <!-- Side info -->
+      <aside class="auth-aside">
+        <div class="card">
+          <h3 style="margin-top:0;">Why create an account?</h3>
+          <ul class="muted" style="margin:10px 0 0; padding-left:18px;">
+            <li>Apply faster with your saved profile</li>
+            <li>Track applications (Phase 6)</li>
+            <li>Employers manage applicants (Phase 5)</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3 style="margin-top:0;">Safety Note</h3>
+          <p class="muted"><strong>No upfront payment.</strong> Never pay to apply for a job.</p>
+        </div>
+      </aside>
+
+    </div>
+  </main>
+
+  <div id="footer"></div>
+
+  <script src="assets/js/include.js"></script>
+ <script type="module" src="assets/js/auth.js"></script>
+</body>
+</html>

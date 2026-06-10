@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Job Seeker Dashboard — Quick Connect LS</title>
+  <link rel="stylesheet" href="../assets/css/main.css" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+
+  <div id="header"></div>
+
+  <section class="page-head">
+    <div class="container">
+      <div class="breadcrumbs">
+        <a href="/index.html">Home</a>
+        <span>›</span>
+        <span>Job Seeker</span>
+        <span>›</span>
+        <span>Dashboard</span>
+      </div>
+      <h1 class="page-title">Job Seeker Dashboard</h1>
+      <p class="page-subtitle">Track your applications and improve your profile.</p>
+    </div>
+  </section>
+
+  <main class="section section-alt">
+    <div class="container">
+
+      <!-- Stats -->
+      <section class="dash-stats">
+
+        <div class="card stat">
+          <div class="stat-top">
+            <div class="stat-icon blue">
+              <i class="fa-solid fa-envelope"></i>
+            </div>
+            <div>
+              <p class="stat-label">Applications</p>
+              <h2 class="stat-value" id="statApplications">0</h2>
+            </div>
+          </div>
+          <p class="muted small">Total submitted (demo)</p>
+        </div>
+
+        <div class="card stat">
+          <div class="stat-top">
+            <div class="stat-icon green">
+              <i class="fa-solid fa-check-circle"></i>
+            </div>
+            <div>
+              <p class="stat-label">Shortlisted</p>
+              <h2 class="stat-value" id="statShortlisted">0</h2>
+            </div>
+          </div>
+          <p class="muted small">Jobs you made progress on</p>
+        </div>
+
+        <div class="card stat">
+          <div class="stat-top">
+            <div class="stat-icon red">
+              <i class="fa-solid fa-xmark-circle"></i>
+            </div>
+            <div>
+              <p class="stat-label">Rejected</p>
+              <h2 class="stat-value" id="statRejected">0</h2>
+            </div>
+          </div>
+          <p class="muted small">Applications declined</p>
+        </div>
+
+      </section>
+
+      <!-- Applications List -->
+      <section class="dash-section">
+        <div class="section-head">
+          <h2>Your Applications</h2>
+        </div>
+
+        <div class="card">
+          <p class="muted">No applications yet. Start applying for jobs.</p>
+        </div>
+      </section>
+
+      <!-- Profile -->
+      <section class="dash-section">
+        <div class="section-head">
+          <h2>Your Profile</h2>
+        </div>
+
+        <div class="card">
+          <p class="muted">Profile details coming soon.</p>
+        </div>
+      </section>
+ 
+    </div>
+  </main>
+ 
+  <script src="../assets/js/header.js"></script>
+
+</body>
+</html>
