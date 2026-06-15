@@ -89,10 +89,21 @@ function renderJobs(list) {
       </div>
 
       <ul class="job-meta">
-        <li>📍 ${labelLocation(job.location)}</li>
-        <li>💼 ${labelType(job.type)}</li>
-        <li>⏱️ Posted ${job.posted}</li>
-      </ul>
+  <li>
+    <i class='bx bx-map'></i>
+    ${labelLocation(job.location)}
+  </li>
+
+  <li>
+    <i class='bx bx-briefcase'></i>
+    ${labelType(job.type)}
+  </li>
+
+  <li>
+    <i class='bx bx-time-five'></i>
+    Posted ${job.posted}
+  </li>
+</ul>
 
       <a class="btn btn-primary" href="/job-details.html?id=${job.id}">View / Apply</a>
     </article>

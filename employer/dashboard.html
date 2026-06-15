@@ -12,6 +12,7 @@
 
   <section class="page-head">
     <div class="container">
+
       <div class="breadcrumbs">
         <a href="/index.html">Home</a>
         <span>›</span>
@@ -19,68 +20,44 @@
         <span>›</span>
         <span>Dashboard</span>
       </div>
-      <h1 class="page-title">Employer Dashboard</h1>
-      <p class="page-subtitle">Manage your job posts and review applicants.</p>
+
+      <h1 class="page-title" id="companyName">Loading company...</h1>
+      <p class="page-subtitle">Manage your job posts and applicants.</p>
+
+      <button id="logoutBtn" class="btn btn-outline" style="margin-top:10px;">
+        Logout
+      </button>
+
     </div>
   </section>
 
   <main class="section section-alt">
     <div class="container">
 
-      <!-- Summary cards -->
+      <!-- Stats -->
       <section class="dash-stats">
+
         <div class="card stat">
-          <div class="stat-top">
-            <div class="stat-icon blue">📄</div>
-            <div>
-              <p class="stat-label">Active Jobs</p>
-              <h2 class="stat-value">4</h2>
-            </div>
-          </div>
-          <p class="muted small">Jobs currently open for applications</p>
+          <p class="stat-label">Active Jobs</p>
+          <h2 class="stat-value" id="activeJobs">0</h2>
         </div>
 
         <div class="card stat">
-          <div class="stat-top">
-            <div class="stat-icon green">👥</div>
-            <div>
-              <p class="stat-label">Applicants</p>
-              <h2 class="stat-value">27</h2>
-            </div>
-          </div>
-          <p class="muted small">Applications received (demo)</p>
+          <p class="stat-label">Total Jobs</p>
+          <h2 class="stat-value" id="totalJobs">0</h2>
         </div>
 
-        <div class="card stat">
-          <div class="stat-top">
-            <div class="stat-icon purple">✅</div>
-            <div>
-              <p class="stat-label">Closed Jobs</p>
-              <h2 class="stat-value">2</h2>
-            </div>
-          </div>
-          <p class="muted small">Jobs you’ve closed recently</p>
-        </div>
-
-        <div class="card stat">
-          <div class="stat-top">
-            <div class="stat-icon orange">⚡</div>
-            <div>
-              <p class="stat-label">Account Status</p>
-              <h2 class="stat-value">Verified</h2>
-            </div>
-          </div>
-          <p class="muted small">Trust badge improves applications</p>
-        </div>
       </section>
 
-      <!-- Actions + Table -->
+      <!-- Jobs Table -->
       <section class="dash-grid">
-        <!-- Left: Posted jobs -->
+
         <div class="card">
           <div class="dash-head">
             <h2 class="dash-title">Your Job Posts</h2>
-            <a class="btn btn-primary" href="/employer/post-job.html">+ Post a Job</a>
+            <a class="btn btn-primary" href="/employer/post-job.html">
+              + Post a Job
+            </a>
           </div>
 
           <div class="table-wrap">
@@ -90,68 +67,16 @@
                   <th>Job Title</th>
                   <th>Location</th>
                   <th>Status</th>
-                  <th>Applicants</th>
                   <th>Action</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td>Administrative Assistant</td>
-                  <td>Maseru</td>
-                  <td><span class="tag tag-green">Active</span></td>
-                  <td>12</td>
-                  <td><a class="link" href="/employer/applicants.html">View</a></td>
-                </tr>
-                <tr>
-                  <td>Accountant</td>
-                  <td>Maseru</td>
-                  <td><span class="tag tag-green">Active</span></td>
-                  <td>7</td>
-                  <td><a class="link" href="/employer/applicants.html">View</a></td>
-                </tr>
-                <tr>
-                  <td>Store Manager</td>
-                  <td>Mafeteng</td>
-                  <td><span class="tag tag-yellow">Pending</span></td>
-                  <td>0</td>
-                  <td><a class="link" href="/employer/post-job.html">Edit</a></td>
-                </tr>
-                <tr>
-                  <td>Marketing Intern</td>
-                  <td>Maseru</td>
-                  <td><span class="tag tag-gray">Closed</span></td>
-                  <td>8</td>
-                  <td><a class="link" href="/employer/applicants.html">Review</a></td>
-                </tr>
-              </tbody>
+
+              <tbody id="jobsTableBody"></tbody>
             </table>
           </div>
 
-          <p class="small muted" style="margin:12px 0 0;">
-            This is demo content. Real job management comes in Phase 7+ (backend).
-          </p>
         </div>
 
-        <!-- Right: Quick panel -->
-        <aside class="dash-aside">
-          <div class="card">
-            <h3 style="margin-top:0;">Quick Actions</h3>
-            <div class="stack">
-              <a class="btn btn-outline" href="/employer/profile.html">Update Company Profile</a>
-              <a class="btn btn-outline" href="/employer/post-job.html">Create New Job Post</a>
-              <a class="btn btn-outline" href="/employer/applicants.html">View Applicants</a>
-            </div>
-          </div>
-
-          <div class="card">
-            <h3 style="margin-top:0;">Tips to Get More Applicants</h3>
-            <ul class="muted" style="margin:10px 0 0; padding-left:18px;">
-              <li>Add clear salary range (optional)</li>
-              <li>Include exact location and job type</li>
-              <li>Write a short, clear description</li>
-            </ul>
-          </div>
-        </aside>
       </section>
 
     </div>
@@ -159,6 +84,8 @@
 
   <div id="footer"></div>
 
+  <script type="module" src="../assets/js/employer.js"></script>
   <script src="../assets/js/include.js"></script>
+
 </body>
 </html>
