@@ -19,36 +19,40 @@
         <span>›</span>
         <span>Post a Job</span>
       </div>
+
       <h1 class="page-title">Post a Job</h1>
-      <p class="page-subtitle">Create a clear listing to attract the right candidates.</p>
+      <p class="page-subtitle">
+        Create a job listing and connect with workers quickly.
+      </p>
     </div>
   </section>
 
   <main class="section section-alt">
     <div class="container form-layout">
 
-      <!-- Form -->
       <section class="card">
+
         <div class="dash-head">
           <h2 class="dash-title">Job Details</h2>
-          <a class="btn btn-outline" href="/employer/dashboard.html">Back to Dashboard</a>
+          <a class="btn btn-outline" href="/employer/dashboard.html">
+            Back to Dashboard
+          </a>
         </div>
 
         <form id="postJobForm" class="form-stack">
 
           <div class="grid-2-form">
+
             <div class="field">
               <label for="title">Job Title *</label>
-              <input id="title" type="text" required />
+              <input
+                id="title"
+                type="text"
+                placeholder="e.g. House Cleaner"
+                required
+              />
             </div>
 
-            <div class="field">
-              <label for="company">Company *</label>
-              <input id="company" type="text" required />
-            </div>
-          </div>
-
-          <div class="grid-2-form">
             <div class="field">
               <label for="location">Location *</label>
               <select id="location" required>
@@ -66,66 +70,75 @@
               </select>
             </div>
 
-            <div class="field">
-              <label for="type">Job Type *</label>
-              <select id="type" required>
-                <option value="">Select job type</option>
-                <option>Full-time</option>
-                <option>Part-time</option>
-                <option>Contract</option>
-                <option>Internship</option>
-                <option>Temporary</option>
-              </select>
-            </div>
           </div>
 
           <div class="grid-2-form">
+
             <div class="field">
-              <label for="category">Category *</label>
-              <select id="category" required>
-                <option value="">Select category</option>
-                <option>IT & Tech</option>
-                <option>Admin</option>
-                <option>Construction</option>
-                <option>Health</option>
-                <option>Education</option>
-                <option>Retail</option>
-                <option>Marketing</option>
-                <option>Finance</option>
+              <label for="startTime">Start Time *</label>
+              <input
+                id="startTime"
+                type="datetime-local"
+                required
+              />
+            </div>
+
+            <div class="field">
+              <label for="duration">Duration *</label>
+              <select id="duration" required>
+                <option value="">Select duration</option>
+                <option>Few Hours</option>
+                <option>1 Day</option>
+                <option>2–3 Days</option>
+                <option>1 Week</option>
+                <option>2 Weeks</option>
+                <option>1 Month</option>
+                <option>More than 1 Month</option>
               </select>
             </div>
 
-            <div class="field">
-              <label for="deadline">Closing Date</label>
-              <input id="deadline" type="date" />
-            </div>
           </div>
 
           <div class="grid-2-form">
+
             <div class="field">
-              <label for="salary">Salary (optional)</label>
-              <input id="salary" type="text" />
+              <label for="payment">Payment *</label>
+              <input
+                id="payment"
+                type="text"
+                placeholder="e.g. M250, M500/day, Negotiable"
+                required
+              />
             </div>
 
             <div class="field">
-              <label for="contact">Contact Email *</label>
-              <input id="contact" type="email" required />
+              <label for="workersNeeded">Workers Needed</label>
+              <input
+                id="workersNeeded"
+                type="number"
+                min="1"
+                placeholder="e.g. 3"
+              />
             </div>
+
           </div>
 
           <div class="field">
-            <label for="summary">Short Summary *</label>
-            <textarea id="summary" rows="3" required></textarea>
+            <label for="description">Job Description</label>
+            <textarea
+              id="description"
+              rows="5"
+              placeholder="Describe the job and what workers will be expected to do."
+            ></textarea>
           </div>
 
           <div class="field">
-            <label for="requirements">Requirements *</label>
-            <textarea id="requirements" rows="5" required></textarea>
-          </div>
-
-          <div class="field">
-            <label for="howToApply">How to Apply</label>
-            <textarea id="howToApply" rows="3"></textarea>
+            <label for="terms">Terms & Conditions</label>
+            <textarea
+              id="terms"
+              rows="4"
+              placeholder="Optional requirements, rules or special instructions."
+            ></textarea>
           </div>
 
           <div class="check-row">
@@ -139,12 +152,16 @@
             <button class="btn btn-primary" type="submit">
               Publish Job
             </button>
-            <button class="btn btn-outline" type="reset">Clear</button>
+
+            <button class="btn btn-outline" type="reset">
+              Clear
+            </button>
           </div>
 
           <div id="postJobMsg" class="auth-message" hidden></div>
 
         </form>
+
       </section>
 
     </div>
@@ -153,9 +170,7 @@
   <div id="footer"></div>
 
   <script src="../assets/js/include.js"></script>
-
-  <!-- IMPORTANT: will connect Firebase here -->
   <script type="module" src="../assets/js/employer.js"></script>
-
+  <script type="module" src="../assets/js/postJob.js"></script>
 </body>
 </html>

@@ -1,6 +1,9 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
-import { getFirestore, collection, getDocs } 
-from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
+import {
+  getFirestore,
+  collection,
+  getDocs
+} from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBU6v_oMn0pzt3wqreDYY00pxNxO2OhmFs",
@@ -14,7 +17,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// GLOBAL JOBS ARRAY (IMPORTANT)
+// GLOBAL JOBS ARRAY
 let JOBS = [];
 
 // FETCH FROM FIREBASE
@@ -23,14 +26,14 @@ async function fetchJobs() {
 
   return snapshot.docs.map(doc => {
     const data = doc.data();
+
     return {
       id: doc.id,
-      title: data.title,
-      company: data.company,
-      location: data.location?.toLowerCase(),
-      type: data.type?.toLowerCase(),
-      category: data.category?.toLowerCase(),
-      posted: "Recently"
+      title: data.title || "Untitled Job",
+      location: data.location?.toLowerCase() || "",
+      duration: data.duration || "",
+      payment: data.payment || "",
+      posted: data.posted || "Recently"
     };
   });
 }
@@ -43,36 +46,33 @@ function getParams() {
   const p = new URLSearchParams(window.location.search);
   return {
     q: p.get("q") || "",
-    location: p.get("location") || "all",
-    type: p.get("type") || "all",
-    category: p.get("category") || "all",
+    location: p.get("location") || "all"
   };
 }
 
 function setInputsFromParams(params) {
   const q = document.getElementById("filterQ");
   const loc = document.getElementById("filterLocation");
-  const type = document.getElementById("filterType");
-  const cat = document.getElementById("filterCategory");
 
   if (q) q.value = params.q;
   if (loc) loc.value = params.location;
-  if (type) type.value = params.type;
-  if (cat) cat.value = params.category;
 }
 
 function renderJobs(list) {
   const container = document.getElementById("jobsResults");
   const count = document.getElementById("resultsCount");
+
   if (!container) return;
 
-  if (count) count.textContent = `${list.length} job${list.length === 1 ? "" : "s"} found`;
+  if (count) {
+    count.textContent = `${list.length} job${list.length === 1 ? "" : "s"} found`;
+  }
 
   if (list.length === 0) {
     container.innerHTML = `
       <div class="empty-state">
         <h3>No jobs match your filters</h3>
-        <p>Try changing keyword, location or job type.</p>
+        <p>Try changing your search or location.</p>
       </div>
     `;
     return;
@@ -80,32 +80,38 @@ function renderJobs(list) {
 
   container.innerHTML = list.map(job => `
     <article class="card job-card">
+
       <div class="job-top">
         <div>
           <h3 class="job-title">${job.title}</h3>
-          <p class="job-company">${job.company}</p>
         </div>
-        <span class="pill">${labelCategory(job.category)}</span>
+
+        <span class="pill">
+          ${job.payment || "Payment not specified"}
+        </span>
       </div>
 
       <ul class="job-meta">
-  <li>
-    <i class='bx bx-map'></i>
-    ${labelLocation(job.location)}
-  </li>
+        <li>
+          <i class='bx bx-map'></i>
+          ${labelLocation(job.location)}
+        </li>
 
-  <li>
-    <i class='bx bx-briefcase'></i>
-    ${labelType(job.type)}
-  </li>
+        <li>
+          <i class='bx bx-time-five'></i>
+          ${job.duration || "Duration not specified"}
+        </li>
 
-  <li>
-    <i class='bx bx-time-five'></i>
-    Posted ${job.posted}
-  </li>
-</ul>
+        <li>
+          <i class='bx bx-info-circle'></i>
+          Posted ${job.posted}
+        </li>
+      </ul>
 
-      <a class="btn btn-primary" href="/job-details.html?id=${job.id}">View / Apply</a>
+      <a class="btn btn-primary" href="/job-details.html?id=${job.id}">
+        View / Apply
+      </a>
+
     </article>
   `).join("");
 }
@@ -123,59 +129,34 @@ function labelLocation(loc) {
     "qacha-nek": "Qacha's Nek",
     "berea": "Berea"
   };
-  return map[loc] || loc;
-}
 
-function labelType(t) {
-  const map = {
-    "full-time": "Full-time",
-    "part-time": "Part-time",
-    "contract": "Contract",
-    "internship": "Internship",
-    "temporary": "Temporary"
-  };
-  return map[t] || t;
-}
-
-function labelCategory(c) {
-  const map = {
-    "it-tech": "IT & Tech",
-    "admin": "Admin",
-    "construction": "Construction",
-    "health": "Health",
-    "education": "Education",
-    "retail": "Retail",
-    "marketing": "Marketing",
-    "finance": "Finance"
-  };
-  return map[c] || c;
+  return map[loc] || loc || "N/A";
 }
 
 function applyFilters() {
   const q = normalize(document.getElementById("filterQ")?.value);
   const location = document.getElementById("filterLocation")?.value || "all";
-  const type = document.getElementById("filterType")?.value || "all";
-  const category = document.getElementById("filterCategory")?.value || "all";
 
   const filtered = JOBS.filter(j => {
     const matchesQ =
-      !q ||
-      normalize(j.title).includes(q) ||
-      normalize(j.company).includes(q);
+      !q || normalize(j.title).includes(q);
 
-    const matchesLocation = location === "all" || j.location === location;
-    const matchesType = type === "all" || j.type === type;
-    const matchesCategory = category === "all" || j.category === category;
+    const matchesLocation =
+      location === "all" || j.location === location;
 
-    return matchesQ && matchesLocation && matchesType && matchesCategory;
+    return matchesQ && matchesLocation;
   });
 
   const params = new URLSearchParams();
+
   if (q) params.set("q", q);
   if (location !== "all") params.set("location", location);
-  if (type !== "all") params.set("type", type);
-  if (category !== "all") params.set("category", category);
-  history.replaceState({}, "", `${window.location.pathname}?${params.toString()}`);
+
+  history.replaceState(
+    {},
+    "",
+    `${window.location.pathname}?${params.toString()}`
+  );
 
   renderJobs(filtered);
 }
@@ -183,26 +164,24 @@ function applyFilters() {
 function resetFilters() {
   document.getElementById("filterQ").value = "";
   document.getElementById("filterLocation").value = "all";
-  document.getElementById("filterType").value = "all";
-  document.getElementById("filterCategory").value = "all";
+
   history.replaceState({}, "", window.location.pathname);
+
   renderJobs(JOBS);
 }
 
-// 🔥 FINAL FIX (IMPORTANT PART)
+// INIT
 document.addEventListener("DOMContentLoaded", async () => {
   const params = getParams();
   setInputsFromParams(params);
 
-  JOBS = await fetchJobs(); // ✅ wait for Firebase
+  JOBS = await fetchJobs();
 
-  applyFilters(); // ✅ now render real jobs
+  applyFilters();
 
   document.getElementById("applyFiltersBtn")?.addEventListener("click", applyFilters);
   document.getElementById("resetFiltersBtn")?.addEventListener("click", resetFilters);
 
   document.getElementById("filterQ")?.addEventListener("input", applyFilters);
   document.getElementById("filterLocation")?.addEventListener("change", applyFilters);
-  document.getElementById("filterType")?.addEventListener("change", applyFilters);
-  document.getElementById("filterCategory")?.addEventListener("change", applyFilters);
 });
