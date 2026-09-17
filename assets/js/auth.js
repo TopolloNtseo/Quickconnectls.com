@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (role === "employer") {
       window.location.href = "employer/dashboard.html";
     } else {
-      window.location.href = "freelancer/dashboard.html";
+      window.location.href = "freelancer/dashbord.html";
     }
   }
 

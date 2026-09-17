@@ -29,9 +29,6 @@ onAuthStateChanged(auth, async (user) => {
 
     const userData = userRef.data();
 
-    // ======================
-    // COMPANY NAME
-    // ======================
     const companyName = document.getElementById("companyName");
 
     if (companyName) {
@@ -39,9 +36,6 @@ onAuthStateChanged(auth, async (user) => {
         userData.company || userData.firstName || "My Account";
     }
 
-    // ======================
-    // LOGOUT
-    // ======================
     const logoutBtn = document.getElementById("logoutBtn");
 
     if (logoutBtn) {
@@ -51,9 +45,6 @@ onAuthStateChanged(auth, async (user) => {
       });
     }
 
-    // ======================
-    // LOAD JOBS
-    // ======================
     const q = query(
       collection(db, "jobs"),
       where("employerId", "==", user.uid)
@@ -67,34 +58,45 @@ onAuthStateChanged(auth, async (user) => {
     }));
 
     // ======================
-    // STATS
+    // GET APPLICATION COUNTS
     // ======================
-    const activeJobs = jobs.filter(job => job.status === "OPEN").length;
+    const jobsWithApps = await Promise.all(
+      jobs.map(async (job) => {
+        const appsQuery = query(
+          collection(db, "applications"),
+          where("jobId", "==", job.id)
+        );
 
-    const activeJobsEl = document.getElementById("activeJobs");
-    const totalJobsEl = document.getElementById("totalJobs");
+        const appsSnap = await getDocs(appsQuery);
 
-    if (activeJobsEl) activeJobsEl.textContent = activeJobs;
-    if (totalJobsEl) totalJobsEl.textContent = jobs.length;
+        return {
+          ...job,
+          applicantsCount: appsSnap.size
+        };
+      })
+    );
 
-    // ======================
-    // TABLE
-    // ======================
+    const activeJobs = jobsWithApps.filter(job => job.status === "OPEN").length;
+
+    document.getElementById("activeJobs").textContent = activeJobs;
+    document.getElementById("totalJobs").textContent = jobsWithApps.length;
+
     const table = document.getElementById("jobsTableBody");
 
     if (table) {
-      if (jobs.length === 0) {
+      if (jobsWithApps.length === 0) {
         table.innerHTML = `
           <tr>
             <td colspan="5">No jobs posted yet.</td>
           </tr>
         `;
       } else {
-        table.innerHTML = jobs.map(job => `
+        table.innerHTML = jobsWithApps.map(job => `
           <tr>
             <td>
               <strong>${job.title || "Untitled Job"}</strong><br/>
-              <small>${job.payment || "No payment set"}</small>
+              <small>${job.payment || "No payment set"}</small><br/>
+              <small><b>${job.applicantsCount || 0} applicants</b></small>
             </td>
 
             <td>${job.location || "N/A"}</td>

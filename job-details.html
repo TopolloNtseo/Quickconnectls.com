@@ -19,22 +19,34 @@
         <span>›</span>
         <span>Job Details</span>
       </div>
+
       <h1 class="page-title">Job Details</h1>
+      <p class="page-subtitle">
+        View job information and apply if you're interested.
+      </p>
     </div>
   </section>
 
   <main class="section">
     <div class="container">
 
+      <!-- Loading Card -->
       <div class="card" id="loadingCard">
         <p class="muted" id="jobIdText">Loading job...</p>
       </div>
 
+      <!-- Firebase will render job details here -->
       <div id="jobDetails" class="card" style="margin-top:15px;"></div>
 
-      <div style="margin-top:15px;">
-        <a class="btn btn-primary" href="/auth.html">Apply</a>
-        <a class="btn btn-outline" href="/jobs.html">Back to Jobs</a>
+      <!-- Actions -->
+      <div class="form-actions" style="margin-top:15px;">
+        <a class="btn btn-primary" href="/auth.html">
+          Apply
+        </a>
+
+        <a class="btn btn-outline" href="/jobs.html">
+          Back to Jobs
+        </a>
       </div>
 
     </div>
@@ -43,12 +55,16 @@
   <div id="footer"></div>
 
   <script src="assets/js/include.js"></script>
-  <script type="module" src="/assets/js/job-details.js"></script>
+
+  <!-- Job Details Script -->
+  <script type="module" src="assets/js/job-details.js"></script>
 
   <script>
-    const p = new URLSearchParams(window.location.search);
-    const id = p.get("id") || "N/A";
-    document.getElementById("jobIdText").textContent = `Job ID: ${id}`;
+    const params = new URLSearchParams(window.location.search);
+    const jobId = params.get("id") || "N/A";
+
+    document.getElementById("jobIdText").textContent =
+      `Job ID: ${jobId}`;
   </script>
 
 </body>

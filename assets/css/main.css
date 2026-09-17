@@ -974,7 +974,48 @@ input[type="file"]{
   border-radius: 12px;
   background:#fff;
 }
+.side-panel {
+  position: fixed;
+  top: 0;
+  right: -400px;
+  width: 350px;
+  height: 100%;
+  background: #fff;
+  box-shadow: -4px 0 20px rgba(0,0,0,0.15);
+  transition: 0.3s ease;
+  z-index: 9999;
+  padding: 20px;
+}
 
+.side-panel.active {
+  right: 0;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.panel-header button {
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.panel-body {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.panel-body input {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
 
 
 

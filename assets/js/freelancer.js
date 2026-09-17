@@ -1,118 +1,209 @@
-// Phase 6: Job seeker demo logic (stats, applications, follow-up template, profile save)
+import { auth, db } from "./firebase.js";
 
-(function () {
-  const APPS = [
-    { id: 1, job: "Software Developer", company: "TechHub Lesotho", status: "Viewed", date: "2026-02-05" },
-    { id: 2, job: "Administrative Assistant", company: "Government Office", status: "Submitted", date: "2026-02-07" },
-    { id: 3, job: "Registered Nurse", company: "QMMH", status: "Shortlisted", date: "2026-02-08" },
-    { id: 4, job: "Accountant", company: "Standard Lesotho Bank", status: "Submitted", date: "2026-02-10" },
-  ];
-import { protectPage } from "./guard.js";
+import {
+  onAuthStateChanged,
+  signOut,
+  deleteUser
+} from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
 
-protectPage("seeker"); 
+import {
+  doc,
+  getDoc,
+  updateDoc,
+  collection,
+  query,
+  where,
+  getDocs,
+  deleteDoc
+} from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
 
+/* =======================
+   ELEMENTS
+======================= */
 
-  function statusTag(status) {
-    const s = String(status).toLowerCase();
-    if (s === "shortlisted") return `<span class="tag tag-yellow">Shortlisted</span>`;
-    if (s === "viewed") return `<span class="tag tag-green">Viewed</span>`;
-    return `<span class="tag tag-gray">${status}</span>`;
+const usernameEl = document.getElementById("username");
+
+const usernameInput = document.getElementById("usernameInput");
+const firstNameInput = document.getElementById("firstNameInput");
+const lastNameInput = document.getElementById("lastNameInput");
+const phoneInput = document.getElementById("phoneInput");
+const emailInput = document.getElementById("emailInput");
+
+const saveProfileBtn = document.getElementById("saveProfileBtn");
+const deleteAccountBtn = document.getElementById("deleteAccountBtn");
+
+const logoutBtn = document.getElementById("logoutBtn");
+
+const statApplications = document.getElementById("statApplications");
+const statShortlisted = document.getElementById("statShortlisted");
+const statRejected = document.getElementById("statRejected");
+
+const applicationsTable = document.getElementById("applicationsTable");
+
+let currentUser = null;
+let currentUserData = null;
+
+/* =======================
+   AUTH
+======================= */
+
+onAuthStateChanged(auth, async (user) => {
+  if (!user) {
+    window.location.href = "/auth/login.html";
+    return;
   }
 
-  // Dashboard stats
-  const statApps = document.getElementById("statApplications");
-  const statShort = document.getElementById("statShortlisted");
-  const statViewed = document.getElementById("statViewed");
-  const statScore = document.getElementById("statScore");
+  currentUser = user;
 
-  if (statApps || statShort || statViewed || statScore) {
-    const total = APPS.length;
-    const shortlisted = APPS.filter(a => a.status === "Shortlisted").length;
-    const viewed = APPS.filter(a => a.status === "Viewed").length;
+  await loadUserProfile(user.uid, user.email);
+  await loadApplications(user.uid);
+});
 
-    if (statApps) statApps.textContent = String(total);
-    if (statShort) statShort.textContent = String(shortlisted);
-    if (statViewed) statViewed.textContent = String(viewed);
+/* =======================
+   LOAD PROFILE
+======================= */
 
-    // Demo profile score (Phase 7 will compute from real profile fields)
-    const score = 70;
-    if (statScore) statScore.textContent = `${score}%`;
+async function loadUserProfile(uid, email) {
+  try {
+    const snap = await getDoc(doc(db, "users", uid));
+
+    const data = snap.exists() ? snap.data() : {};
+
+    currentUserData = data;
+
+    const displayName =
+      data.username || `${data.firstName || ""} ${data.lastName || ""}`.trim();
+
+    usernameEl.textContent = displayName || "User";
+
+    usernameInput.value = data.username || "";
+    firstNameInput.value = data.firstName || "";
+    lastNameInput.value = data.lastName || "";
+    phoneInput.value = data.phone || "";
+    emailInput.value = email;
+
+  } catch (error) {
+    console.error(error);
+    usernameEl.textContent = "User";
   }
+}
 
-  // Recent apps (dashboard)
-  const recentBody = document.getElementById("recentAppsBody");
-  if (recentBody) {
-    const recent = APPS.slice(0, 4);
-    recentBody.innerHTML = recent.map(a => `
-      <tr>
-        <td>${a.job}</td>
-        <td>${a.company}</td>
-        <td>${statusTag(a.status)}</td>
-        <td>${a.date}</td>
-        <td><a class="link" href="/freelancer/applications.html">View</a></td>
-      </tr>
-    `).join("");
-  }
+/* =======================
+   SAVE PROFILE
+======================= */
 
-  // Applications page
-  const appsBody = document.getElementById("appsBody");
-  if (appsBody) {
-    appsBody.innerHTML = APPS.map(a => `
-      <tr>
-        <td>${a.job}</td>
-        <td>${a.company}</td>
-        <td>${statusTag(a.status)}</td>
-        <td>${a.date}</td>
-        <td><a class="btn btn-outline btn-sm" href="/job-details.html?id=${a.id}">Job Details</a></td>
-      </tr>
-    `).join("");
-  }
+saveProfileBtn.addEventListener("click", async () => {
+  try {
+    const ref = doc(db, "users", currentUser.uid);
 
-  // Follow up template copy
-  const copyBtn = document.getElementById("copyFollowUpBtn");
-  const copyMsg = document.getElementById("copyMsg");
-
-  if (copyBtn) {
-    copyBtn.addEventListener("click", async () => {
-      const template =
-`Subject: Follow-up on my application
-
-Hello [Hiring Manager Name],
-
-I hope you are well. I’m following up on my application for the [Job Title] position at [Company]. 
-I’m still very interested and would appreciate any update on the next steps.
-
-Thank you for your time.
-
-Kind regards,
-[Your Name]
-[Phone Number]`;
-
-      try {
-        await navigator.clipboard.writeText(template);
-        if (copyMsg) {
-          copyMsg.hidden = false;
-          setTimeout(() => (copyMsg.hidden = true), 1200);
-        }
-      } catch (e) {
-        alert("Copy failed. You can manually copy the template.");
-      }
+    await updateDoc(ref, {
+      username: usernameInput.value,
+      firstName: firstNameInput.value,
+      lastName: lastNameInput.value,
+      phone: phoneInput.value
     });
+
+    usernameEl.textContent =
+      usernameInput.value ||
+      `${firstNameInput.value} ${lastNameInput.value}`;
+
+    alert("Profile updated successfully");
+  } catch (err) {
+    console.error(err);
+    alert("Failed to update profile");
   }
+});
 
-  // Profile save (demo)
-  const profileForm = document.getElementById("profileForm");
-  const profileMsg = document.getElementById("profileMsg");
+/* =======================
+   DELETE ACCOUNT
+======================= */
 
-  if (profileForm) {
-    profileForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      if (profileMsg) {
-        profileMsg.hidden = false;
-        profileMsg.textContent = "Profile saved successfully (demo).";
-        profileMsg.style.borderColor = "rgba(37,99,235,.35)";
-        profileMsg.style.background = "#eff6ff";
-      }
+deleteAccountBtn.addEventListener("click", async () => {
+  const confirmDelete = confirm(
+    "Are you sure you want to delete your account? This cannot be undone."
+  );
+
+  if (!confirmDelete) return;
+
+  try {
+    await deleteDoc(doc(db, "users", currentUser.uid));
+    await deleteUser(currentUser);
+
+    alert("Account deleted");
+    window.location.href = "/index.html";
+  } catch (err) {
+    console.error(err);
+    alert("Failed to delete account. You may need to re-login first.");
+  }
+});
+
+/* =======================
+   APPLICATIONS
+======================= */
+
+async function loadApplications(uid) {
+  try {
+    const q = query(
+      collection(db, "applications"),
+      where("userId", "==", uid)
+    );
+
+    const snap = await getDocs(q);
+
+    let total = 0;
+    let shortlisted = 0;
+    let rejected = 0;
+
+    applicationsTable.innerHTML = "";
+
+    snap.forEach((docSnap) => {
+      const a = docSnap.data();
+
+      total++;
+
+      if (a.status === "shortlisted") shortlisted++;
+      if (a.status === "rejected") rejected++;
+
+      applicationsTable.innerHTML += `
+        <tr>
+          <td>${a.jobTitle || "Untitled Job"}</td>
+          <td>${formatStatus(a.status)}</td>
+          <td>${a.date || "-"}</td>
+        </tr>
+      `;
     });
+
+    statApplications.textContent = total;
+    statShortlisted.textContent = shortlisted;
+    statRejected.textContent = rejected;
+
+  } catch (error) {
+    console.error(error);
   }
-})();
+}
+
+/* =======================
+   STATUS
+======================= */
+
+function formatStatus(status) {
+  if (!status) return "Pending";
+
+  switch (status) {
+    case "shortlisted":
+      return "Shortlisted";
+    case "rejected":
+      return "Rejected";
+    default:
+      return "Pending";
+  }
+}
+
+/* =======================
+   LOGOUT
+======================= */
+
+logoutBtn.addEventListener("click", async () => {
+  await signOut(auth);
+  window.location.href = "/index.html";
+});
